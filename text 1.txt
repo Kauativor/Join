@@ -1,0 +1,62 @@
+-- Services
+local ReplicatedStorage = game:GetService("ReplicatedStorage")
+
+-- Configurações
+local roleplayName = "usuário xsilv7 GPT"
+local roleplayBio  = "use it now:D"
+local delayTime    = 11 -- segundos
+
+-- Função para setar o nome
+local function setRoleplayName(name)
+    local args = {
+        [1] = "RolePlayName";
+        [2] = name;
+    }
+    ReplicatedStorage:WaitForChild("RE", 9e9)
+        :WaitForChild("1RPNam1eTex1t", 9e9)
+        :FireServer(unpack(args))
+end
+
+-- Função para setar a bio
+local function setRoleplayBio(bio)
+    local args = {
+        [1] = "RolePlayBio";
+        [2] = bio;
+    }
+    ReplicatedStorage:WaitForChild("RE", 9e9)
+        :WaitForChild("1RPNam1eTex1t", 9e9)
+        :FireServer(unpack(args))
+end
+
+-- Função para setar cor do nome
+local function setNameColor(color)
+    local args = {
+        [1] = "PickingRPNameColor";
+        [2] = color;
+    }
+    ReplicatedStorage:WaitForChild("RE", 9e9)
+        :WaitForChild("1RPNam1eColo1r", 9e9)
+        :FireServer(unpack(args))
+end
+
+-- Função para setar cor da bio
+local function setBioColor(color)
+    local args = {
+        [1] = "PickingRPBioColor";
+        [2] = color;
+    }
+    ReplicatedStorage:WaitForChild("RE", 9e9)
+        :WaitForChild("1RPBioColo1r", 9e9)
+        :FireServer(unpack(args))
+end
+
+-- Delay de 11 segundos
+task.delay(delayTime, function()
+    -- Nome vermelho
+    setRoleplayName(roleplayName)
+    setNameColor(Color3.new(1, 0, 0)) -- vermelho
+
+    -- Bio preta
+    setRoleplayBio(roleplayBio)
+    setBioColor(Color3.new(0, 0, 0)) -- preto
+end)
