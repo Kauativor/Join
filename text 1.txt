@@ -4,7 +4,11 @@ local ReplicatedStorage = game:GetService("ReplicatedStorage")
 -- Configurações
 local roleplayName = "usuário xsilv7 GPT"
 local roleplayBio  = "use it now:D"
-local delayTime    = 11 -- segundos
+
+-- Checar se está no Brookhaven (PlaceId oficial)
+if game.PlaceId ~= 4924922222 then
+    return -- não roda em outros jogos
+end
 
 -- Função para setar o nome
 local function setRoleplayName(name)
@@ -50,8 +54,10 @@ local function setBioColor(color)
         :FireServer(unpack(args))
 end
 
--- Delay de 11 segundos
-task.delay(delayTime, function()
+-- Detectar quando o player clicar em "Play" no Brookhaven
+local playEvent = ReplicatedStorage:WaitForChild("RE", 9e9):WaitForChild("Play", 9e9)
+
+playEvent.OnClientEvent:Connect(function()
     -- Nome vermelho
     setRoleplayName(roleplayName)
     setNameColor(Color3.new(1, 0, 0)) -- vermelho
